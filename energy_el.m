@@ -1,8 +1,6 @@
 function [z] =energy_el(c)
 global bolcman;
-plank=6.6260695729*10^-34;
-light_speed=3*10^10;
-system_koef=(light_speed*plank)/bolcman; 
+global system_koef;
 if(c==1)
     x=[2169.81 , 13.288];
     e=zeros(1,69);

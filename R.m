@@ -1,8 +1,5 @@
 function [z] = R(j,T,n,n_1,en,en1,tau0,n0)
-global bolcman;
-plank=6.6260695729*10^-34;      %ƒж*с    
-light_speed=3*10^10;            %см/с
-system_koef=(light_speed*plank)/bolcman;
+global system_koef;
 x=[2169.81 , 13.288];           %спектроскопические посто€нные дл€ X1Sigma+
 %-------------------------------------------------------------------------- R_VV
 L=[0:1:67]; 

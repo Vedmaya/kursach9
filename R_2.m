@@ -1,8 +1,5 @@
 function [z] = R_2(j,T,n_1,n,en,en1,tau0,n0)
-global bolcman;
-plank=6.6260695729*10^-34;      %ƒж*с    
-light_speed=3*10^10;            %см/с
-system_koef=(light_speed*plank)/bolcman;
+global system_koef;
 x=[1743.41 , 14.36];            %спектроскопические посто€нные дл€ a3Pi
 %--------------------------------------------------------------------------R_VV
 L=[0:1:33];

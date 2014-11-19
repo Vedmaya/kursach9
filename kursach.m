@@ -20,6 +20,7 @@ x3=[1518.24 , 19.4, 0.766];                                 %A1Pi
 global T0;
 global T1;
 global bolcman;
+global system_koef;
 global myu;
 global n0;
 global tau0;
@@ -28,6 +29,9 @@ T0=500;                         %K
 T1=5000;                        %K
 O=[0,48686.7,65075.77];         %энергия электронных уровней X1Sigma+,a3Pi,A1Pi cm^(-1)
 bolcman=1.380648813*10^-23;     %Дж/К
+plank=6.6260695729*10^-34;      %Дж*с    
+light_speed=3*10^10;            %см/с
+system_koef=(light_speed*plank)/bolcman;
 diam=3.5*10^(-10);              %m
 R_gas=8.31;                     %Дж/К/моль
 myu=0.028;                      %кг/моль
@@ -35,19 +39,20 @@ p0=10^5;                        %Pa
 n0=p0/(bolcman*T0);             %m^(-3)
 tau0=bolcman*sqrt(myu*T0/(6*R_gas))/(pi*diam^2*p0);%с
 %--------------------------------------------------------------------------
-y000=[1:1:68]; 
-n4=(nc_bolc777(T0,68,x1,O(1)))';
-n5=(nc_bolc777(T0,34,x2,O(2)))';
-n5(15)=n5(15)+1.290328189*10^(-61);
-n5(1)=n5(1)-1.290328189*10^(-61);
-display(n5);
-% n40=(nc_2(T0, T1, O(1), 68, x1))';
-% a=sum(n40);
-% n50=(nc_2(T0, T1, O(2), 34, x2))';
-% b=sum(n50);
 e=energy_el(1);
 en=energy_el(2);
-y333=[n4;n5;1];
+n_EL=nc_bolc_El(T0);
+n_EL(1)=n_EL(1)-9.97911636*10^(-1);
+n_EL(75)=n_EL(75)+9.97911636*10^(-1);
+n=n_EL';
+y333=[n;1];
+
+% % n40=(nc_2(T0, T1, O(1), 68, x1))';
+% % a=sum(n40);
+% % n50=(nc_2(T0, T1, O(2), 34, x2))';
+% % b=sum(n50);
+% y333=[n4;n5;1];
+
 buratino=Rigth_hand(y333,e,en,tau0,n0,T0);
 options=odeset('InitialStep',10e-30,'MaxStep',10e-2);
 [t, Y]=ode15s(@Solve,[0,1e+6],y333,options);
