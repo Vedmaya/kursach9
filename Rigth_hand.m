@@ -1,5 +1,5 @@
 function [z] = Rigth_hand(y,en,en1,tau0,n0,T0)   
-bolcman=1.380648813*10^-23;     %Дж/К
+global bolcman;
 
 w=zeros(105,1);
 n=[y(1:69)];

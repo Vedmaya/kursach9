@@ -1,6 +1,6 @@
 function [z] = R_2(j,T,n_1,n,en,en1,tau0,n0)
+global bolcman;
 plank=6.6260695729*10^-34;      %Дж*с    
-bolcman=1.380648813*10^-23;     %Дж/К
 light_speed=3*10^10;            %см/с
 system_koef=(light_speed*plank)/bolcman;
 x=[1743.41 , 14.36];            %спектроскопические постоянные для a3Pi

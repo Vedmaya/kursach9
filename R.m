@@ -1,6 +1,6 @@
 function [z] = R(j,T,n,n_1,en,en1,tau0,n0)
+global bolcman;
 plank=6.6260695729*10^-34;      %Дж*с    
-bolcman=1.380648813*10^-23;     %Дж/К
 light_speed=3*10^10;            %см/с
 system_koef=(light_speed*plank)/bolcman;
 x=[2169.81 , 13.288];           %спектроскопические постоянные для X1Sigma+
