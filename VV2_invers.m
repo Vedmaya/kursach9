@@ -1,8 +1,5 @@
 function [z] =VV2_invers(j,k,T,x)
-plank=6.6260695729*10^-34;
-bolcman=1.380648813*10^-23;
-light_speed=3*10^10;
-system_koef=(light_speed*plank)/bolcman; 
+global system_koef;
 
 c=0.456;
 b=40.36;
@@ -18,7 +15,7 @@ l=zeros(1,length(k));
 Q=zeros(1,length(k));
 
 for i=1:1:length(k)
-    deltaE(i)=-2*x(2)*(j-k(i))*system_koef;
+    deltaE(i)=2*x(2)*(j-k(i))*system_koef;
     D1(i)=((a+1)/(a+3-2*(k(i))))^2*(k(i))*(a+2-2*(k(i)))*(a+4-2*(k(i)))/(a*(a+3-(k(i))));
     lambda(i)=2^(-3/2)*sqrt(c/T)*abs(deltaE(i));
     F(i)=(3-exp(-2*lambda(i)/3))*exp(-2*lambda(i)/3)/2;
