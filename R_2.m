@@ -1,8 +1,12 @@
-function [z] = R_2(j,T,n_1,n,en,en1,tau0,n0)
+function [z] = R_2(j,T,n_1,n)
 global system_koef;
+global n0;
+global tau0;
+global e;
+global en;
 x=[1743.41 , 14.36];            %спектроскопические постоянные для a3Pi
 %--------------------------------------------------------------------------R_VV
-L=[0:1:33];
+L=[1:1:34];
 k_1=VV2_invers(j+1,L,T,x)*tau0*n0;
 if(j==0)
     k_2=zeros(1,length(L));

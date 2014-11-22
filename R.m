@@ -1,8 +1,12 @@
-function [z] = R(j,T,n,n_1,en,en1,tau0,n0)
+function [z] = R(j,T,n,n_1)
 global system_koef;
+global n0;
+global tau0;
+global e;
+global en;
 x=[2169.81 , 13.288];           %спектроскопические постоянные для X1Sigma+
 %-------------------------------------------------------------------------- R_VV
-L=[0:1:67]; 
+L=[1:1:68]; 
 k_1=VV2_invers(j+1,L,T,x)*tau0*n0;
 if(j==0)
     k_2=zeros(1,length(L));
