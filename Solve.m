@@ -6,8 +6,8 @@ function [ F ] = Solve( X, Y )
     global myu;
     global bolcman;
     global T0;
-    global n0;
-    global tau0; 
+    global n0; 
+    global tau0;
     %----------------------------------------------------------------------
     Navagadr= 6.022*10^23;
     m=myu/Navagadr;
@@ -18,13 +18,13 @@ function [ F ] = Solve( X, Y )
         N=sum(Y(1:104))*n0;
         E=5/2*bolcman*T/m+n0/(m*N)*(sum(e*Y(1:69))+sum(en*Y(70:104)));
         display(T);
-        display(X*1.9e-10);
+        display(X*tau0);
         display(N);
         display(E);
         display(min(Y(1:104)));
         saveIndex(index);
         saveData('T',T);
-        saveData('time',X*1.9e-10);
+        saveData('time',X*tau0);
         saveData('N',N);
         saveData('E',E);
         saveData('Y',Y);
@@ -34,6 +34,6 @@ function [ F ] = Solve( X, Y )
         I=0; 
     end
     I=I+1;
-    F=Rigth_hand(Y,e,en,tau0,n0,T0);
+    F=Rigth_hand(Y);
 end
 
