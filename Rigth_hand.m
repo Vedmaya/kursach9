@@ -9,7 +9,7 @@ R0=zeros(1,104);
 for i=1:1:69
     R0(i)=R(i-1,T,n,n2,en,en1,tau0,n0);
     w(i)=R0(i);
-end;
+end; 
 for i=1:1:35
     R0(69+i)=R_2(i-1,T,n,n2,en,en1,tau0,n0);
     w(69+i)=R0(69+i);
